@@ -22,3 +22,11 @@ From each lecture directory:
 ```sh
 typst compile main.typ
 ```
+
+# Adding a new lecture
+
+From the root:
+```sh
+typst init @preview/boxed-sheet
+mv boxed-sheet $NEW_LECTURE
+```
