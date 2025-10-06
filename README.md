@@ -4,7 +4,7 @@ A collection of cheatsheets based off exam notes of the fifth CS semester.
 
 # Project Structure
 
-``
+```
 .
 ├── lecture1
 │   ├── assets
