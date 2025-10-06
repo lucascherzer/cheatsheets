@@ -26,6 +26,17 @@
   column-gutter: 2pt,
   numbered-units: false
 )
+#let img(path, caption) = [
+
+  #figure(
+    caption: caption,
+    image(
+      path,
+      width: 80%
+    )
+  )
+]
+
 
 = Business Intelligence
 #concept-block(body: [
@@ -45,60 +56,67 @@
   )
 
   #inline("System Architecture")
-  #figure(
-    caption: [Data Pipeline],
-    image("assets/system.drawio.png")
-  )
+
+  #img("assets/system.drawio.png", [Data Pipeline])
 
 ])
 
 = OLAP
-OLAP Systems are the database frontend that communicates with the Data Warehouse.
-#figure(
-  caption: [Dimensions and Data Points],
-  image("assets/cubedim.png")
-)
+#concept-block(body: [
+  OLAP Systems are the database frontend analysts interact with, that is derived
+  from the Data Warehouse.
+  #img("assets/cubedim.png", [Dimensions and Data Points])
 
 
-#inline("Risks")
-- Incomplete Dimensions
-- Wrong Data
-- Gaps in data
-- Duplicate data (or lack of a single source of truth)
-- Confusing correlation and causation
-- Privacy Violations
+  #inline("FASMI Rules")
+  The FASMI Rules outline requirements for Data Warehouse Systems:
 
-= Data Dimensions
-All data points are points in a space spanned by the dimensions.
-Dimensions often include time, space or products.
-A point then, is set of numbers that fully cover all dimensions.
-
-== Information Schemas
-#inline("Star Schema")
-- Every Dimension has one table, connections via Foreign Key Relations
-- One table for facts
-- Facts reference dimensions
-#figure(
-  caption: [],
-  image("assets/star.drawio.png", width: 80%)
-)
-
-#inline("Snowflake Schema")
-- Like Star Schema, but Dimensions can have hierarchies
-#figure(
-  caption: [],
-  image("assets/snowflake.drawio.png", width: 90%)
-)
+  #strong("F")ast
+  #strong("A")nalysis of
+  #strong("S")hared
+  #strong("M")ultidimensional
+  #strong("I")nformation
 
 
-= Abbreviations
-#table(
-  columns: 2,
-  stroke: 0.2pt,
-  [*OLAP*], [Online Analytical Processing],
-  [*ETL*], [Extract Transform Load]
-)
+  #inline("Risks")
+  - Incomplete Dimensions
+  - Wrong Data
+  - Gaps in data
+  - Duplicate data (or lack of a single source of truth)
+  - Confusing correlation and causation
+  - Privacy Violations
+])
+= Information Schemas
 
-= References
-+ #link("https://htmlcheatsheet.com/js/")[JS Cheat Sheet: https://htmlcheatsheet.com/js/]
-+ #link("https://htmlcheatsheet.com/")[HTML Cheat Sheet: https://htmlcheatsheet.com/]
+#concept-block(body: [
+  All data points are points in a space spanned by the dimensions, as can be seen in
+  .
+  Dimensions often include time, space or products.
+  A point then, is set of numbers that fully cover all dimensions.
+
+  #inline("Star Schema")
+  - Every Dimension has one table, connections via Foreign Key Relations
+  - One table for facts
+  - Facts reference dimensions
+
+  #img("assets/star.drawio.png", [General Star Schema])
+
+  #inline("Snowflake Schema")
+  - Like Star Schema, but Dimensions can have hierarchies
+
+  #img("assets/snowflake.drawio.png", [General Snowflake Schema])
+])
+
+= Addendum
+#concept-block(body: [
+  #table(
+    columns: 2,
+    stroke: 0.2pt,
+    [*OLAP*], [Online Analytical Processing],
+    [*ETL*], [Extract Transform Load]
+  )
+
+  #inline("References")
+  + #link("https://htmlcheatsheet.com/js/")[JS Cheat Sheet: https://htmlcheatsheet.com/js/]
+  + #link("https://htmlcheatsheet.com/")[HTML Cheat Sheet: https://htmlcheatsheet.com/]
+])
