@@ -70,6 +70,8 @@ jobs:
         shell: nu {0}
         run: |
           cd $env.GITHUB_WORKSPACE
+          pwd
+          ls
           source build.nu
           build-all
 
