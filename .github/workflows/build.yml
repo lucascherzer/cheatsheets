@@ -1,0 +1,87 @@
+name: Build Cheatsheets
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Nushell
+      uses: hustcer/setup-nu@v3
+      with:
+        version: '0.90.0'
+    
+    - name: Verify Nushell installation
+      shell: nu {0}
+      run: |
+        print $'Nu version info:(char nl)'
+        version
+    
+    - name: Install Typst
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz -o typst.tar.xz
+        tar -xf typst.tar.xz
+        sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
+        typst --version
+    
+    - name: Build all cheatsheets
+      shell: nu {0}
+      run: |
+        print $'Nu path: (which nu)(char nl)'
+        source build.nu
+        build-all
+    
+    - name: Upload PDF artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: cheatsheets
+        path: '*.pdf'
+  
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Nushell
+      uses: hustcer/setup-nu@v3
+      with:
+        version: '0.90.0'
+    
+    - name: Install Typst
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz -o typst.tar.xz
+        tar -xf typst.tar.xz
+        sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
+        typst --version
+    
+    - name: Build all cheatsheets
+      shell: nu {0}
+      run: |
+        source build.nu
+        build-all
+    
+    - name: Get short SHA
+      id: sha
+      run: echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: build-${{ steps.sha.outputs.short_sha }}
+        name: Cheatsheets Build ${{ steps.sha.outputs.short_sha }}
+        files: '*.pdf'
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
