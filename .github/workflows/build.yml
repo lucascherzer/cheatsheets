@@ -35,7 +35,6 @@ jobs:
       - name: Build all cheatsheets
         shell: nu {0}
         run: |
-          print $'Nu path: (which nu)(char nl)'
           source build.nu
           build-all
 
