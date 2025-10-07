@@ -27,7 +27,7 @@ jobs:
     - name: Install Typst
       shell: bash
       run: |
-        curl -fsSL https://github.com/typst/typst/releases/download/v0.11.1/typst-x86_64-unknown-linux-musl.tar.xz -o typst.tar.xz
+        curl -fsSL https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz -o typst.tar.xz
         tar -xf typst.tar.xz
         sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
         typst --version
@@ -44,3 +44,19 @@ jobs:
       with:
         name: cheatsheets
         path: '*.pdf'
+    
+    - name: Get short SHA
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      id: sha
+      run: echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+    
+    - name: Create Release
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ steps.sha.outputs.short_sha }}
+        name: Release ${{ steps.sha.outputs.short_sha }}
+        files: '*.pdf'
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
