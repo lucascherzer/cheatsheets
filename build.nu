@@ -12,8 +12,8 @@ def build-all [] {
     let typst_dir = {|x| $x.type == dir and "main.typ" in ((ls $x.name).name | path basename) }
     let _ = ls
     | where $typst_dir
-    | par-each {
-        print $"Building ($in.name)"
-        build-lecture $in.name
+    | par-each {|it|
+        print $"Building ($it.name)"
+        build-lecture $it.name
     }
 }
