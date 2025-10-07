@@ -37,10 +37,9 @@ jobs:
           pwd
           ls -la
       - name: Build all cheatsheets
-        shell: nu {0}
+        shell: bash
         run: |
-          source ./build.nu
-          build-all
+          nu -c "source build.nu; build-all"
 
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v4
@@ -70,10 +69,9 @@ jobs:
           typst --version
 
       - name: Build all cheatsheets
-        shell: nu {0}
+        shell: bash
         run: |
-          source $"($env.GITHUB_WORKSPACE)/build.nu"
-          build-all
+          nu -c "source build.nu; build-all"
 
       - name: Get short SHA
         id: sha
