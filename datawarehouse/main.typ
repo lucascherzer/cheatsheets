@@ -102,13 +102,16 @@
   #img("assets/star.drawio.png", [General Star Schema])
 
   #inline("Snowflake Schema")
-  - Like Star Schema, but Dimensions can have hierarchies
+  - Generally follows the Star Schema
+  - But Dimensions can have hierarchies of different depths
 
   #img("assets/snowflake.drawio.png", [General Snowflake Schema])
 ])
 
 = Addendum
 #concept-block(body: [
+
+  #inline("Abbreviations")
   #table(
     columns: 2,
     stroke: 0.2pt,
