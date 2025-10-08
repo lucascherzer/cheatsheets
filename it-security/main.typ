@@ -88,21 +88,21 @@
   *Ablauf #link("https://attack.mitre.org/")[MITRE ATT&CK]*
 
   #columns(2, [
-    + Reconaissance (Aufklärung)
-    + Ressource Development
-    + Initial Access
-    + Execution
-    + Persistence
-    + Privilege Escalation
-    + Defense Evasion
+    1. Reconaissance (Aufklärung)
+    2. Ressource Development
+    3. Initial Access
+    4. Execution
+    5. Persistence
+    6. Privilege Escalation
+    7. Defense Evasion
     #colbreak()
-    + Credential Access
-    + Discovery
-    + Lateral Movement
-    + Collection
-    + Command and Control
-    + Exfiltration
-    + Impact
+    8. Credential Access
+    9. Discovery
+    10. Lateral Movement
+    11. Collection
+    12. Command and Control
+    13. Exfiltration
+    14. Impact
   ])
 
   *Beispiel Prüfungsfrage:* In welchem der 14 Schritte, würde man einen Portscan einsetzen?
