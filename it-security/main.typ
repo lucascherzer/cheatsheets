@@ -27,69 +27,68 @@
   numbered-units: false
 )
 
-= Grundlegende begriffe der IT-Sicherheit
+= Basic Concepts
 #concept-block(body: [
-  == Informationssicherheit
+  == Information Security
   #columns(2, [
     #figure(
       image("assets/CIA-Triade.png", width: 100%),
-      caption: [Allgemeine Schutzziele (CIA-Triade)]
+      caption: [The CIA triad]
     )
     #colbreak()
-    - *Vertraulichkeit:* Daten sollen immer (Speicherung, Datenübertragung, Abruf) nur von autorisierten Benutzern eingesehen werden.
-    - *Integrität:* Daten sind immer konsistent. Sie werden nicht bei der Übertragung oder anderweitig unbefugt verändert.
-    - *Verfügbarkeit:* Daten sollen möglichst immer vefügbar sein. Daten sollen auf keinen Fall verloren gehen.
+    - *Confidentiality:* Data should only be accessible at all times (Storage, Transit, Access) to authorized personnel.
+    - *Integrity:* Data should always be consistent and cannot be changed without notice.
+    - *Availability:* Data should always remain accessible to prevent data loss.
   ])
-  *Weitere Schutzziele*
-  - *Authentizität:* Echtheit der Daten
-  - *Verbindlichkeit/Nichtabstreitbarkeit:* Kein Abstreiten der Datenänderung möglich
-  - *Zurechenbarkeit:* Eindeutig einem Kommunikationspartner zuordnen
-  - Im Rahmen der DSGVO: Resilienz/Wiederstandsfähigkeit gegen Angriffe
+  *Extended Goals*
+  - *Authenticity:* The data is authentic.
+  - *Non-repudiation:* It's not possible to deny the data change.
+  - *Accountability:* Can be uniquely assigned to a communication partner.
+  - As part of the GDPR: Resilience against attacks.
 
-  == IT-Sicherheit
+  == IT Security
   #figure(
     image("assets/basiselemente-it-sicherheit.png"),
-    caption: [Basiselemente der IT-Sicherheit]
+    caption: [Basic elements of IT security]
   )
 
-  == Cyber-Sicherheit
+  == Cyber Security
   #set quote(block: true)
-  #quote(attribution: [Kaspersky])[Unter Cybersicherheit versteht man Maßnahmen, um Computer, Server, Mobilgeräte, elektronische Systeme, Netzwerke und Daten gegen böswillige Angriffe zu verteidigen. Sie wird auch als IT-Sicherheit oder elektronische Datensicherheit bezeichnet.]
-  *Dazu gehören:*
+  #quote(attribution: [Kaspersky])[Cybersecurity refers to measures to defend computers, servers, mobile devices, electronic systems, networks, and data against malicious attacks. It is also called IT security or electronic data security.]
+  *This includes:*
   #columns(2, [
-    - Netzwerksicherheit
-    - Programmsichereheit
-    - Informationssicherheit
-    - Betriebssicherheit
+    - Network security
+    - Program security
+    - Information security
+    - Operational security
     #colbreak()
     - Disaster Recovery
     - Business Continuity
-    - Awareness-Trainings
+    - Awareness training
   ])
 
-  == Definition von Daten
+  == Definition of Data
 
-  #quote(attribution: [Laut Strafgesetzbuch §202a Ausspähen von Daten])[Daten im Sinne Absatzes 1 sind nur solche, die *elektronisch, magnetisch* oder sonst *nicht unmittelbar wahrnehmbar* gespeichert sind oder übermittelt werden.]
-  #quote(attribution: [Laut DSGVO])[Personenbezogene Daten, sind alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen]
+  #quote(attribution: [According to the Criminal Code §202a Spying on data])[Data within the meaning of paragraph 1 are only those that are stored or transmitted *electronically, magnetically* or otherwise *not directly perceptible*.]
+  #quote(attribution: [According to GDPR])[Personal data are all information relating to an identified or identifiable natural person.]
 
-  *Beispiel Prüfungsfrage:* Handelt es sich bei einer IP-Adresse um personenbezogene Daten im Sinne der DSGVO? (Antwort: Es kommt drauf an ob statische oder dynamisch vergeben...)
+  *Example exam question:* Is an IP address personal data within the meaning of the GDPR? (Answer: It depends on whether it is static or dynamically assigned...)
 
   == CTI, OSINT, APT
 
-  - *Cyber Threat Intelligence (CTI):* Prozess der Identifizierung und Analyse von Cyberbedrohungen
-  - *Open-Source Intelligence (OSINT):* Sammlung von frei verfügbaren Informationen und Gewinnung von Erkenntnissen
-  - *Advanced Persistent Threat (APT):* Bezeichnungen von professionellen Cybergruppierungen
-
+  - *Cyber Threat Intelligence (CTI):* Process of identifying and analyzing cyber threats.
+  - *Open-Source Intelligence (OSINT):* Collection of freely available information and gaining insights.
+  - *Advanced Persistent Threat (APT):* Designations of professional cyber groups.
 
   == MITRE ATT&CK, Lockhead Martins Cyber Kill Chain & Maltego
 
-  - #link("https://www.maltego.com/")[Maltego (erwähntes OSINT-TOOL)]
+  - #link("https://www.maltego.com/")[Maltego (mentioned OSINT tool)]
 
-  *Ablauf #link("https://attack.mitre.org/")[MITRE ATT&CK]*
+  *Process #link("https://attack.mitre.org/")[MITRE ATT&CK]*
 
   #columns(2, [
-    1. Reconaissance (Aufklärung)
-    2. Ressource Development
+    1. Reconnaissance (Reconnaissance)
+    2. Resource Development
     3. Initial Access
     4. Execution
     5. Persistence
@@ -105,12 +104,12 @@
     14. Impact
   ])
 
-  *Beispiel Prüfungsfrage:* In welchem der 14 Schritte, würde man einen Portscan einsetzen?
+  *Example exam question:* In which of the 14 steps would you use a port scan?
 ])
 
-= Begriffe
+= Terms
 #concept-block(body: [
-  - *Informationssicherheit:* Informationssicherheit beschreibt den Schutz von Informationen.
-  - *IT-Sicherheit:* Die IT-Sicherheit beschreibt die technischen Elemente.
-  - *Cyber-Sicherheit:* Cyber-Sicherheit bezieht sich auf die Gesamtheit und überschreitet die Grenzen der eigenen Firma oder Umgebung.
+  - *Information Security:* Information security describes the protection of information.
+  - *IT Security:* IT security describes the technical elements.
+  - *Cyber Security:* Cyber security refers to the entirety and transcends the boundaries of one's own company or environment.
 ])
